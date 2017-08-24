@@ -18,8 +18,9 @@ class FilmsTableSeeder extends Seeder
            	$name = $faker->name;
            	
 	           Film::create([
-	               	'name' => $name,
-	               	'slug' => str_slug($name),
+                'id' => $faker->uuid,
+	              'name' => $name,
+	              'slug' => str_slug($name),
 		            'release' => $faker->date('d/m/Y'),
 		            'locale' => $faker->city . ' - ' . $faker->stateAbbr . ', ' . $faker->country,
 		            'site' =>  $faker->url,
