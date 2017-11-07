@@ -12,8 +12,8 @@ class Film extends Model
     public    $incrementing = false;
     
     protected $fillable = [
-	    'name',    
-	    'slug',     
+	    'name',
+	    'slug',
 	    'body',     
 	    'release',  
 	    'locale',   

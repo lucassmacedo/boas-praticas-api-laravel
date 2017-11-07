@@ -13,4 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('films', 'FilmsController', ['except' => ['create','edit']]);
+//Route::resource('films', 'FilmsController', ['except' => ['create','edit']]);
+
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1', function ($api) {
+    $api->group(['middleware' => 'bindings'], function ($api) {
+
+        $api->get('/version', function () {
+            return ['version' => config('api.version')];
+        });
+        $api->resource('films', '\App\Http\Controllers\FilmsController', ['except' => ['create', 'edit']]);
+    });
+});

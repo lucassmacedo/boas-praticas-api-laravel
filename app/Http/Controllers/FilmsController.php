@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Film;
-use Illuminate\Http\Request;
-
 class FilmsController extends Controller
 {
     /**
@@ -17,25 +15,14 @@ class FilmsController extends Controller
        return response()->json(['data'=> Film::all()]);
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\FilmRequest $request)
     {
-        $this->validate($request, [
-            'name'     => 'required|max:255',
-            'slug'      => 'required|unique:films|max:255',
-            'release'   => 'required',
-            'locale'    => 'required',
-            'duration'  => 'required',
-            'sinopse'   => 'required',
-            'cover'     => 'required',
-        ]);
-
         return Film::create($request->all());
     }
 
